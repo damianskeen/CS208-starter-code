@@ -1,56 +1,44 @@
-// This is a simple JavaScript file that adds interactivity to the HTML page
-// It defines a function to show an alert when a link is clicked
-function sayHello() {
-    alert("Hello, world from javascript!");
-}
-// This function will be called when the link is clicked
-// It shows an alert with a message
-// Ensure the DOM is fully loaded before attaching the event listener
-document.addEventListener("DOMContentLoaded", function() {
-    const link = document.getElementById("hello-link");
-    if (!link) {
-        console.error("Link with ID 'hello-link' not found.");
-        return;
-    }
-    link.addEventListener("click", function(event) {
-        event.preventDefault(); // Prevent the default link behavior
-        sayHello();
-    });
-});
+// attaching the event listener to the form
+document.getElementById('lineUpForm').addEventListener('submit', myLineUp);
 
-async function getRandomJoke() {
-    return fetch('https://icanhazdadjoke.com/', {
-        headers: {
-            'Accept': 'text/plain'
-        }
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.text();
-    })
-    .catch(error => {
-        console.error('There was a problem fetching the joke:', error);
-        return "Failed to fetch a joke. Please try again later.";
-    });
+function myLineUp(event) 
+{
+event.preventDefault(); // to stop form from reloading allows us to
+//display results without reloading the page:)
+
+// where we get the status
+const statusEl = document.querySelector('input[name="status"]:checked');
+const status = statusEl ? statusEl.value : "None";
+
+// get the game date
+const gameDate = document.getElementById('gameDate').value;
+
+// get the checked players
+let checkboxes = document.getElementsByName("players");
+let checkedPlayers = [];
+
+for (let i = 0; i < checkboxes.length; i++) //simple loop to see which boxes are checked 
+{
+  if (checkboxes[i].checked) 
+    {
+    checkedPlayers.push(checkboxes[i].value);
+    }
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    const jokeButton = document.getElementById("joke-button");
-    if (!jokeButton) {
-        console.error("Button with ID 'joke-button' not found.");
-        return;
-    }
-    jokeButton.addEventListener("click", async function() {
 
-            const jokeDisplay = document.getElementById("joke-display");
-            if (!jokeDisplay) {
-                console.error("Element with ID 'joke-display' not found.");
-                return;
-            }
-            jokeDisplay.textContent = "Loading joke...";
-            const joke = await getRandomJoke();
-            jokeDisplay.textContent = joke;
-    });
-});
+// log all data to console
+console.log("Status:", status);
+console.log("Game Date:", gameDate);
+console.log("Players:", checkedPlayers);
+
+// then build the output string
+const playersStr = checkedPlayers.length ? checkedPlayers.join(", ") : "None selected";//saying if there are checked players, join then with a comma, otherwise output none selected
+const outputString = `Status: ${status} | Date: ${gameDate} | Players: ${playersStr}`; // actual output sting that is displayed
+
+//then display the result on page
+const outputDiv = document.getElementById('output');
+outputDiv.textContent = outputString;// .textcontent was something new I learned, this allows you to output in plaintext
+
+//and print concatenated result to console
+console.log("Concatenated Output:", outputString);
+}

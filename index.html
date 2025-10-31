@@ -1,25 +1,72 @@
-<!doctype html>
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>CS208 - Starter Code (UPDATE ME)!</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <title>Model Form</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <h1>HTML Rocks!!</h1>
-  <ul>
-  <li><a href="/hello">Click here to say hello</a></li>
-  <li><button id="hello-link">Click Me!</button></li>
-  <li><button id="joke-button">Dad Joke!</button></li>
-  <script src="script.js"></script>
-  </ul>
-  <img src="funny.png" alt="Funny Image" width="300" height="200">
 
-  <h2 id="joke-display"></h2>
+  <h1>Model Form</h1>
+
+  <form id="lineUpForm"> <!-- line 2 in .js looks for this thn waits for submit-->
+    <!-- STATUS -->
+    <p>
+      <fieldset>
+        <legend>Status:</legend>
+        <label>
+          <input type="radio" name="status" value="Draft"> Draft
+        </label>
+        <label>
+          <input type="radio" name="status" value="Final" checked> Final
+        </label>
+      </fieldset>
+    </p>
+
+    <!-- DATE -->
+    <p>
+      <label for="gameDate">Date:</label>
+      <select name="gameDate" id="gameDate">
+        <option value="March 20">March 20</option>
+        <option value="March 24">March 24</option>
+        <option value="April 2">April 2</option>
+        <option value="April 6">April 6</option>
+        <option value="April 13">April 13</option>
+      </select>
+    </p>
+
+    <!-- PLAYERS -->
+    <p>
+      <fieldset>
+        <legend>Players:</legend>
+        <div class="players-box">
+          <div class="players-list">
+            <label><input type="checkbox" name="players" value="Aarav Agarwal"> Aarav Agarwal</label>
+            <label><input type="checkbox" name="players" value="Ava Johnson"> Ava Johnson</label>
+            <label><input type="checkbox" name="players" value="Julio Ortiz"> Julio Ortiz</label>
+            <label><input type="checkbox" name="players" value="Liam Rubio"> Liam Rubio</label>
+            <label><input type="checkbox" name="players" value="Emma Witherspoon"> Emma Witherspoon</label>
+          </div>
+        </div>
+      </fieldset>
+    </p>
+
+    <!-- SUBMIT -->
+    <p>
+      <input type="submit" value="Submit">
+    </p>
+  </form>
+
+  <!-- RESULT OUTPUT -->
+  <div id="output" role="status" aria-live="polite"></div> <!-- found aria-live from external resources, aka youtube
+  when watching web development videos. this is an alert to allows screen reader to announce that this part of the page will change
+  thought this was unique and wanted to implement it into my code at some point.-->
+
+  <script src="script.js"></script> 
+  <!-- had to add this to the end cause the console 
+  log was getting null from my js when i attached 
+  the event listener to the form, used external resources
+  to figure this out.-->
+
 </body>
-
 </html>

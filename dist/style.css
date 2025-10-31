@@ -1,29 +1,76 @@
-h1{
-  border-color: #d3e644;
-  border-style: dashed;
+body 
+{
+  font-family: "Times New Roman", Times, serif;
+  font-size: 18px;
+  margin: 28px;
+  color: #1a1a1a;
 }
 
-table {
-  border-collapse: collapse;
-  width: 100%;
-  margin-bottom: 20px;
+h1 
+{
+  font-size: 20px;
+  margin-bottom: 18px;
 }
 
-th, td {
-  padding: 12px 15px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
+/* making fieldsets broad and with thin border */
+fieldset 
+{
+  border: 2px solid #666;
+  padding: 12px 14px;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-th {
-  background-color: #f2f2f2;
-  font-weight: bold;
+/* makes legends slightly inset and aligned like the sample */
+legend 
+{
+  padding: 0 6px;
+  font-weight: normal;
 }
 
-tbody tr:nth-child(even) {
-  background-color: #f9f9f9;
+/* each group must be wrapped by <p> */
+p 
+{
+  margin: 18px 0; /*spaces, then aligns to the left similar to the pic*/
 }
 
-tbody tr:hover {
-  background-color: #e9e9e9;
+/* label spacing so the radio/checkbox text sits nicely */
+label 
+{
+  display: inline-block;
+  margin-right: 16px;
+  cursor: pointer;
+}
+
+/* the player list area box */
+.players-box 
+{
+  height: 160px;
+  border: none;          
+  padding-left: 6px;
+  overflow: auto;
+}
+
+/* formatting for player line (indentation) */
+.players-list label 
+{
+  display: block;
+  margin: 8px 0;
+  font-size: 18px;
+}
+
+/* submit style based on example */
+input[type="submit"] 
+{
+  font-size: 16px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+/* the ourput text for after submit button is pressed */
+#output 
+{
+  margin-top: 20px;
+  font-size: 16px;
+  color: #000;
 }
